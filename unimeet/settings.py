@@ -3,7 +3,7 @@ import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-environ.Env.read_env(BASE_DIR / '.env')
+environ.Env.read_env(BASE_DIR / ".env")
 env = environ.Env(DEBUG=(bool, False))
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -25,9 +25,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    
     # istalled apps
     "rest_framework",
+    "user",
 ]
 
 MIDDLEWARE = [
@@ -100,4 +100,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = "static/"
-AUTH_USER_MODEL = 'user.User'
+AUTH_USER_MODEL = "user.User"

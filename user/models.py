@@ -51,7 +51,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     age = models.PositiveBigIntegerField(null=False)
 
-    gender = models.CharField(max_length=20, choices=GenderChoice.chice, default=None)
+    gender = models.CharField(max_length=20, choices=GenderChoice.choices, default=None)
 
     is_staff = models.BooleanField(default=False, help_text="Доступ в админку Django")
 
@@ -69,8 +69,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class StudentProfile(models.Model):
-    user = models.OneToOneField(
-        on_delete=models.CASCADE, related_name="Student Profile"
+    user_profile = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name="student_profile"
     )
     name = models.CharField(max_length=250)
     username = models.CharField(max_length=100, unique=True)
@@ -81,8 +81,8 @@ class StudentProfile(models.Model):
 
 
 class ProfessorProfile(models.Model):
-    user = models.OneToOneField(
-        on_delete=models.CASCADE, related_name="Professor Profile"
+    user_profile = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name="professor_profile"
     )
     name = models.CharField(max_length=250)
     username = models.CharField(max_length=100, unique=True)
